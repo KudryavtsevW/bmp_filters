@@ -34,14 +34,11 @@ BGRTriple** OtsuThreshold(BGRTriple** bgr, BITMAPINFOHEADER bitmapInfoHeader)
 	unsigned int sum = 0;
 	for (i = 0; i < 256; i++)
 	{
-		//printf("%d ", histogram[i]);
+		
 		sum += histogram[i];
 
 	}
-	//printf("\n");
-	//printf("%d = sum \n %u = lumn \n", sum, sumOfLuminance);
 	unsigned int allPixels = bitmapInfoHeader.biWidth * bitmapInfoHeader.biHeight;
-	//printf("%d \n", allPixels);
 	// оптимальный порог
 	uint8_t optimalThreshold = 0;
 	// количество полезных пикселей(пикселей первого класса)
@@ -69,7 +66,7 @@ BGRTriple** OtsuThreshold(BGRTriple** bgr, BITMAPINFOHEADER bitmapInfoHeader)
 		double M2 = ((double)(sumOfLuminance - firstClassLuminanceSum)) / (allPixels - firstClassPixelCount); // величина разброса(Разница между яркостью первого класса и яркостью всего изображения делится на разность в количестве пикселей всего изображения и пикселей первого класса) 
 		double mDelta = M1 - M2; // общий разброс (разница между средней яркостью первого класса и второго класса)
 		double sigma = P1 * P2 * mDelta * mDelta; // находим оптимальный разброс 
-		//printf("sigma %d = %lf | firstClassPixelCount = %d, firstClassLuminanceSum = %d,  P1 = %lf, M1 = %lf| P2 = %lf, M2 = %lf \n", threshold, sigma, firstClassPixelCount, firstClassLuminanceSum, P1, M1, P2, M2);
+		
 		if (sigma > optimalSigma)
 		{
 			optimalSigma = sigma;
@@ -77,7 +74,6 @@ BGRTriple** OtsuThreshold(BGRTriple** bgr, BITMAPINFOHEADER bitmapInfoHeader)
 		}
 		global_disp += (((double)threshold - (double)(sumOfLuminance) / (double)(sum)) * ((double)threshold - (double)(sumOfLuminance) / (double)(sum))) * (double)histogram[threshold] / (double)allPixels;
 	}
-	//printf("globalDisp = %lf\n", global_disp);
 	printf("optimalThreshold = %d \n", optimalThreshold);
 	for (int i = 0; i < bitmapInfoHeader.biHeight; i++)
 	{

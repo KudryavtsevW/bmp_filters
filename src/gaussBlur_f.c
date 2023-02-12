@@ -1,5 +1,5 @@
 #include "../headers/Filters.h"
-#include "../mylib/listLib.h"
+#include "../list/listLib.h"
 
 uint8_t x,y;
 BGRTriple **GaussBlur(BGRTriple** bgr, BITMAPINFOHEADER bitmapInfoHeader, uint8_t coreSize, double sigma)
@@ -116,7 +116,6 @@ int **FillPixelCoreB(BGRTriple** bgr, BITMAPINFOHEADER bitmapInfoHeader, int **p
 		int rnd = rand() % sizeList(lVec);
 		pushBack(lVec, getVal(lVec, rnd));
 	}
-    //printf("i = %d\tj = %d\n", i, j);
     
 	int tmp = 0;
 	toCore(pixelCore, lVec, coreSize);
@@ -180,6 +179,5 @@ int GetCorePixel(int** pixelCore, uint8_t coreSize)
 			sum += pixelCore[i][j];
 		}
 	}
-	//printf("%lf \n", sum);
 	return (int)sum;
 }

@@ -1,5 +1,5 @@
 #include "headers/Filters.h"
-#include "mylib/listLib.h"
+#include "list/listLib.h"
 #include "headers/ReadWriteBmp.h"
 enum State
 {
@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
                     printf("invalid sobel mode\n");
                     return -21;
                 }
-                if (sobelMode > 3 || sobelMode < 0)
+                if (sobelMode > 3 || sobelMode < 1)
                 {
                     printf("invalid sobel mode %d\n", sobelMode);
                     return -22;
