@@ -10,7 +10,7 @@ make
 Файл file.bmp  должен находиться в директории /bmp
 ## Commands
 ```
-Sobel > ./bmp_filters file.bmp sobel <1/2/3> (horizontal/vertical/vertical+horizontal)
+Sobel > ./bmp_filters file.bmp sobel <1, 2, 3> (horizontal/vertical/vertical+horizontal)
 
 Gauss > ./bmp_filters file.bmp gauss <3, 5, 7, 9, 11> (gauss core size) <0...> (dispersion (float))
 
